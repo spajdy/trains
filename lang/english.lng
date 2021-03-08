@@ -1,0 +1,176 @@
+##grflangid 0x01
+# This is the English language file
+
+#GRF name and description 
+STR_GRF_NAME	:RoE part 1 {VERSION}
+STR_GRF_DESC	:ROE stands for Rails Of Europe. This is pre-alpha build to see if it will be compatibile with some of my ideas from before. Please beaware that this rail pack is not reccomended to be used while other rail packs are used. This may result in unexpected behaviour for now. Thanks for understanding. {AUTHORS}
+
+#PARAMETRE
+STR_PARAM_TRACKS		:Choose what rails you want to use in-game
+STR_PARAM_TRACKS_DESC	:Choose what rails you wan to play with:{}{}1: Classic OpenTTD{}2: Slovak classic rails: Gauage: 1435 mm, non-electrfied, DC 3 kV and AC 25 kV {}3: Slovak advanced rails: This adds to Slovak rails: 1435 mm, AC 15 kV.{}{}Deflaut value: 2. Slovak classic rails
+
+STR_PARAM1_O1			:Classic OpenTTD
+STR_PARAM1_O2			:Slovak classic rails
+STR_PARAM1_O3			:Slovak advanced rails
+
+STR_PARAM2_NAME			:Allow narrow gauge rails.
+STR_PARAM2_DESC			:This will allow narrow gauge rails and rag rails.{}760 mm and 1000 mm. THEERE ARE NOT TRAINS FOR THIS CURRENTLY!
+
+STR_PARAM3_NAME			:Allow broad gauge rails
+STR_PARAM3_DESC			:This will allow broad gauge rails. 1520 mm. THEERE ARE NOT TRAINS FOR THIS CURRENTLY!
+
+#RAIL LABEL
+STR_ITEM_NAME_RAIL		:Industrial spur {SILVER}1435 mm
+STR_ITEM_TOOLBAR_RAIL	:Building industrial spur {SILVER}1435 mm
+STR_ITEM_MENU_RAIL		:Industrial spur {SILVER}1435 mm
+STR_ITEM_NEWENGINE_RAIL	:train
+
+#DNNA LABEL
+STR_ITEM_NAME_DNNA		:Local rails {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DNNA	:Building local rail {SILVER}1435 mm
+STR_ITEM_MENU_DNNA		:Local rails {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DNNA	:train
+
+#DNNB LABEL
+STR_ITEM_NAME_DNNB		:Normal rails {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DNNB	:Building Normal rails {SILVER}1435 mm
+STR_ITEM_MENU_DNNB		:Normal rails {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DNNB	:train
+
+#DNNC LABEL
+STR_ITEM_NAME_DNNC		:Fast rails {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DNNC	:Building Fast rails {SILVER}1435 mm
+STR_ITEM_MENU_DNNC		:Fast rails {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DNNC	:train
+
+#DNZA LABEL
+STR_ITEM_NAME_DNZA	:Rag rails {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DNZA	:Building Rag rails {SILVER}1435 mm
+STR_ITEM_MENU_DNZA		:Rag rails {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DNZA	:rag train
+
+#ELRL LABEL
+STR_ITEM_NAME_ELRL		:{LTBLUE}Multi-system electric service rails {SILVER}1435 mm
+STR_ITEM_TOOLBAR_ELRL	:Building {LTBLUE}Multi-system electric service rails{SILVER} 1435 mm
+STR_ITEM_MENU_ELRL		:{LTBLUE}Multi-system electric service rails {SILVER}1435 mm
+STR_ITEM_NEWENGINE_ELRL	:electric train (=3 kV, ~25 kV)
+
+#DEWA LABEL
+STR_ITEM_NAME_DEWA		:Electric rails {GREEN}= 3 kV {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DEWA	:Building electric rails {GREEN}= 3 kV {SILVER}1435 mm
+STR_ITEM_MENU_DEWA		:Electric rails {GREEN}= 3 kV {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DEWA	:electric train (= 3 kV)
+
+#DEWB LABEL
+STR_ITEM_NAME_DEWB		:Fast electric rails {GREEN}= 3 kV {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DEWB	:Building fast electric rails {GREEN}= 3 kV {SILVER}1435 mm
+STR_ITEM_MENU_DEWB		:Fast electric rails {GREEN}= 3 kV {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DEWB	:electric train (= 3 kV)
+
+#DEWC LABEL
+STR_ITEM_NAME_DEWC		:Highspeed electric rails {GREEN}= 3 kV {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DEWC	:Building highspeed electric rails {GREEN}= 3 kV {SILVER}1435 mm
+STR_ITEM_MENU_DEWC		:Fast highspeed electric rails {GREEN}= 3 kV {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DEWC	:highspeed electric train (= 3 kV)
+
+#DHWA LABEL
+STR_ITEM_NAME_DHWA		:Electric rails {CREAM}~ 25 kV {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DHWA	:Building electric rails {CREAM}~ 25 kV {SILVER}1435 mm
+STR_ITEM_MENU_DHWA		:Electric rails {CREAM}~ 25 kV {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DHWA	:electric train (~ 25 kV)
+
+#DHWB LABEL
+STR_ITEM_NAME_DHWB		:Fast electric rails w/ETCS {CREAM}~ 25 kV {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DHWB	:Building fast electric rails w/ETCS {CREAM}~ 25 kV {SILVER}1435 mm
+STR_ITEM_MENU_DHWB		:Fast electric rails w/ETCS {CREAM}~ 25 kV {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DHWB	:electric train (~ 25 kV)
+
+#DHWC LABEL
+STR_ITEM_NAME_DHWC		:Highspeed electric rails {CREAM}~ 25 kV {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DHWC	:Building highspeed electric rails {CREAM}~ 25 kV {SILVER}1435 mm
+STR_ITEM_MENU_DHWC		:Highspeed electric rails {CREAM}~ 25 kV {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DHWC	:highspeed electric train (~ 25 kV)
+
+#DGWA LABEL
+STR_ITEM_NAME_DGWA		:Electric rails {CREAM}~ 15 kV {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DGWA	:Building electric rails {CREAM}~ 15 kV {SILVER}1435 mm
+STR_ITEM_MENU_DGWA		:Electric rails {CREAM}~ 15 kV {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DGWA	:electric train (~ 15 kV)
+
+#DGWB LABEL
+STR_ITEM_NAME_DGWB		:Fast electric rails {CREAM}~ 15 kV {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DGWB	:Building fast electric rails {CREAM}~ 15 kV {SILVER}1435 mm
+STR_ITEM_MENU_DGWB		:Fast electric rails {CREAM}~ 15 kV {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DGWB	:electric train (~ 15 kV)
+
+#DGWC LABEL
+STR_ITEM_NAME_DGWC		:Highspeed electric rails {CREAM}~ 15 kV {SILVER}1435 mm
+STR_ITEM_TOOLBAR_DGWC	:Building highspeed electric rails {CREAM}~ 15 kV {SILVER}1435 mm
+STR_ITEM_MENU_DGWC		:Highspeed electric rails {CREAM}~ 15 kV {SILVER}1435 mm
+STR_ITEM_NEWENGINE_DGWC	:highspeed electric train (~ 15 kV)
+
+#BNNA LABEL
+STR_ITEM_NAME_BNNA		:Narrow gauge rails {SILVER} 760 mm
+STR_ITEM_TOOLBAR_BNNA	:Building narrow gauge rails {SILVER} 760 mm
+STR_ITEM_MENU_BNNA		:Narrow gauge rails {SILVER} 760 mm
+STR_ITEM_NEWENGINE_BNNA	:narrow gauge train (760 mm)
+
+#BBWA LABEL
+STR_ITEM_NAME_BBWA		:Narrow electric gauge rails {YELLOW}= 750 V {SILVER} 760 mm
+STR_ITEM_TOOLBAR_BBWA	:Building electric narrow gauge rails {YELLOW}= 750 V {SILVER} 760 mm
+STR_ITEM_MENU_BBWA		:Narrow electric gauge rails {YELLOW}= 750 V {SILVER} 760 mm
+STR_ITEM_NEWENGINE_BBWA	:narrow electric gauge train  {YELLOW}= 750 V {SILVER}(760 mm)
+
+#CNNA LABEL
+STR_ITEM_NAME_CNNA		:Narrow gauge rails {SILVER} 1000 mm
+STR_ITEM_TOOLBAR_CNNA	:Building narrow gauge rails {SILVER} 1000 mm
+STR_ITEM_MENU_CNNA		:Narrow gauge rails {SILVER} 1000 mm
+STR_ITEM_NEWENGINE_CNNA	:narrow gauge train (1000 mm)
+
+#CNZA LABEL
+STR_ITEM_NAME_CNZA		:Narrow gauge rag rails {SILVER} 1000 mm
+STR_ITEM_TOOLBAR_CNZA	:Building narrow gauge rag rails {SILVER} 1000 mm
+STR_ITEM_MENU_CNZA		:Narrow gauge rag rails {SILVER} 1000 mm
+STR_ITEM_NEWENGINE_CNZA	:narrow gauge rag train (1000 mm)
+
+#CIWA LABEL
+STR_ITEM_NAME_CIWA		:Narrow gauge rails {YELLOW}= 1,5 kV {SILVER} 1000 mm
+STR_ITEM_TOOLBAR_CIWA	:Building narrow gauge rails {YELLOW}= 1,5 kV {SILVER} 1000 mm
+STR_ITEM_MENU_CIWA		:Narrow gauge rails {YELLOW}= 1,5 kV{SILVER} 1000 mm
+STR_ITEM_NEWENGINE_CIWA	:narrow gauge train {YELLOW}= 1,5 kV {SILVER}(1000 mm)
+
+#CIRA LABEL
+STR_ITEM_NAME_CIRA		:Narrow gauge rag rails {YELLOW}= 1,5 kV {SILVER} 1000 mm
+STR_ITEM_TOOLBAR_CIRA	:Building narrow gauge rag rails {YELLOW}= 1,5 kV {SILVER} 1000 mm
+STR_ITEM_MENU_CIRA		:Narrow gauge rag rails {YELLOW}= 1,5 kV{SILVER} 1000 mm
+STR_ITEM_NEWENGINE_CIRA	:narrow gauge rag train {YELLOW}= 1,5 kV {SILVER}(1000 mm)
+
+#CIRH LABEL
+STR_ITEM_NAME_CIRH		:Narrow gauge rag rails {YELLOW}= 1,5 kV {SILVER} 1000 mm
+STR_ITEM_TOOLBAR_CIRH	:Building narrow gauge rag rails {YELLOW}= 1,5 kV {SILVER} 1000 mm
+STR_ITEM_MENU_CIRH		:Narrow gauge rag rails {YELLOW}= 1,5 kV{SILVER} 1000 mm
+STR_ITEM_NEWENGINE_CIRH	:narrow gauge rag train {YELLOW}= 1,5 kV {SILVER}(1000 mm)
+
+#ENNA LABEL
+STR_ITEM_NAME_ENNA	:Broad gauge rails {SILVER} 1520 mm
+STR_ITEM_TOOLBAR_ENNA	:Building broad gauge rails{SILVER} 1520 mm
+STR_ITEM_MENU_ENNA		:Broad gauge rails {SILVER} 1520 mm
+STR_ITEM_NEWENGINE_ENNA :Broad gauge train {SILVER} 1520 mm
+
+#ENNB LABEL
+STR_ITEM_NAME_ENNB		:Fast broad gauge rails {SILVER} 1520 mm
+STR_ITEM_TOOLBAR_ENNB	:Building fast broad gauge rails{SILVER} 1520 mm
+STR_ITEM_MENU_ENNB		:Fast broad gauge rails {SILVER} 1520 mm
+STR_ITEM_NEWENGINE_ENNB :Broad gauge train {SILVER} 1520 mm
+
+#EEWA LABEL
+STR_ITEM_NAME_EEWA		:Broad gauge electric rails {GREEN}= 3 kV {SILVER} 1520 mm
+STR_ITEM_TOOLBAR_EEWA	:Building broad gauge electric rails {GREEN}= 3 kV {SILVER} 1520 mm
+STR_ITEM_MENU_EEWA		:Broad gauge rails {GREEN}= 3 kV {SILVER} 1520 mm
+STR_ITEM_NEWENGINE_EEWA	:Broad gauge electric train {GREEN}= 3kV {SILVER} 1520 mm
+
+#EEWB LABEL
+STR_ITEM_NAME_EEWB		:Fast broad gauge electric rails {GREEN}= 3 kV {SILVER} 1520 mm
+STR_ITEM_TOOLBAR_EEWB	:Building fast broad gauge electric rails {GREEN}= 3 kV {SILVER} 1520 mm
+STR_ITEM_MENU_EEWB		:Fast broad gauge rails {GREEN}= 3 kV {SILVER} 1520 mm
+STR_ITEM_NEWENGINE_EEWB	:Broad gauge electric train {GREEN}= 3kV {SILVER} 1520 mm
