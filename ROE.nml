@@ -1,0 +1,799 @@
+grf {
+	grfid:	"JS\03\00";
+	name:	string(STR_GRF_NAME);
+	desc:	string(STR_GRF_DESC);
+	version:	001;
+	min_compatible_version:	10;
+	param 1 {
+		param_tracks{
+			type:		int;
+			name:		string(STR_PARAM_TRACKS);
+			desc:		string(STR_PARAM_TRACKS_DESC);
+			min_value:	0;
+			max_value:	2;
+			def_value:	1;
+			names:		{
+				0:		string(STR_PARAM1_O1);
+				1:		string(STR_PARAM1_O2);
+				2:		string(STR_PARAM1_O3);
+			};
+		}
+	}
+
+	param 2 {
+		param_NARROW{
+			type:		bool;
+			name:		string(STR_PARAM2_NAME);
+			desc:		string(STR_PARAM2_DESC);
+			bit:		1;
+			def_value:	0;
+		}
+	}
+	
+		param 3 {
+			param_BROAD{
+				type:		bool;
+				name:		string(STR_PARAM3_NAME);
+				desc:		string(STR_PARAM3_DESC);
+				bit:		2;
+				def_value:	0;
+			}
+		}
+}
+
+
+/*SWITCH OFF INGAME TRAINS*/	
+disable_item(FEAT_TRAINS, 0, 115);
+
+
+
+railtypetable{
+	RAIL,
+	DNNA,
+	DNNB,
+	DNNC,
+	DNZA,
+	
+	/*electric*/
+	ELRL,
+	
+	/* = 3 kV*/
+	DEWA: [ELRL],
+	DEWB: [ELRL],
+	DEWC: [ELRL],
+	
+	/* ~ 25 kV*/
+	DHWA: [ELRL],
+	DHWB: [DHWA, DGWA, ELRL], /*Táto umožňuje pridať lokomotívy, ktoré vedia jazdiť pod 25 kV aj pod 15 kV)*/
+	DHWC: [DHWA, ELRL],
+	
+	/* ~ 15 kV*/
+	DGWA: [ELRL],
+	DGWB: [DGWA, DHWB, ELRL],
+	DGWC: [DGWA, ELRL],
+
+	/* TREŽ */
+	BNNA, BBWA, BBWC,
+	
+	/*TEŽ A OŽ*/
+	CNNA, CNZA, CIWA, CIRA, CIRH,
+	
+	/*Širokorozchodná*/
+	ENNA, ENNB, ENNC,
+	
+	/*široko 3 kV*/
+	EEWA, 
+	EEWB, /*umožňuje univerzálnu lokomotívu*/
+	EEWC,
+	
+	/*Široko, 25 kV*/
+	EHWA, 
+	EHWB,
+	EHWC,
+	
+	/*1,5 kV, 1435 mm*/
+	DDWA: [ELRL],
+	DDWB: [DGWA, ELRL], /*Support for 15 kV*/
+	DDWC: [DHWA, ELRL], /*Support for 25 kV*/
+	DDWH: [DGWB, ELRL], /*Support for 3+15+25 kV*/
+	
+	
+	}	
+	
+	
+if((param_tracks == 1) || (param_tracks ==2)){	
+/*Unpowered rails with gauge 1435 mm */ 
+	/* CLASSIC INGAME RAIL */
+		item(FEAT_RAILTYPES, item_RAIL){
+			property{
+				label:						"RAIL";
+				introduction_date:			date(1800,1,1);
+				name:						string(STR_ITEM_NAME_RAIL);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_RAIL);
+				menu_text:					string(STR_ITEM_MENU_RAIL);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_RAIL);
+				powered_railtype_list:		["ELRL", "DNNA", "DNNB", "DNNC", "DNZA", "DEWA", "DEWB", "DEWC", "DHWA", "DHWB", "DHWC", "DGWA", "DGWB", "DGWC"];
+
+				railtype_flags:				bitmask();
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			8;
+				speed_limit:				40 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					0;
+				maintenance_cost:			0;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+		
+	/* DNNA 1435 NONPOWERED 90 KM/h */
+		item(FEAT_RAILTYPES, item_DNNA){
+			property{
+				label:						"DNNA";
+				introduction_date:			date(1800,1,1);
+				name:						string(STR_ITEM_NAME_DNNA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DNNA);
+				menu_text:					string(STR_ITEM_MENU_DNNA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DNNA);
+				powered_railtype_list:		["RAIL", "ELRL", "DNNB", "DNNC", "DNZA", "DEWA", "DEWB", "DEWC", "DHWA", "DHWB", "DHWC", "DGWA", "DGWB", "DGWC"];
+
+				railtype_flags:				bitmask();
+				curve_speed_multiplier:		225;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			9;
+				speed_limit:				80 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					1;
+				maintenance_cost:			8;
+				/*alternative_railtype_list:	["RAIL", "DNNB", "DNNC"];*/		
+				}
+			}
+	/* DNNB 1435 NONPOWERED 120 km/h */
+		item(FEAT_RAILTYPES, item_DNNB){
+			property{
+				label:						"DNNB";
+				introduction_date:			date(1850,1,1);
+				name:						string(STR_ITEM_NAME_DNNB);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DNNB);
+				menu_text:					string(STR_ITEM_MENU_DNNB);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DNNB);
+				powered_railtype_list:		["RAIL", "ELRL", "DNNA", "DNNC", "DNZA", "DEWA", "DEWB", "DEWC", "DHWA", "DHWB", "DHWC", "DGWA", "DGWB", "DGWC"];
+
+				railtype_flags:				bitmask();
+				curve_speed_multiplier:		6;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			10;
+				speed_limit:				100 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					2;
+				maintenance_cost:			9;
+				/*alternative_railtype_list:	["RAIL", "DNNB", "DNNC"];*/		
+				}
+			}
+			
+		/* DNNC 1435 NONPOWERED 160 km/h */
+		item(FEAT_RAILTYPES, item_DNNC){
+			property{
+				label:						"DNNC";
+				introduction_date:			date(1900,1,1);
+				name:						string(STR_ITEM_NAME_DNNC);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DNNC);
+				menu_text:					string(STR_ITEM_MENU_DNNC);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DNNC);
+				powered_railtype_list:		["RAIL", "ELRL", "DNNA", "DNNB", "DNZA", "DEWA", "DEWB", "DEWC", "DHWA", "DHWB", "DHWC", "DGWA", "DGWB", "DGWC"];
+
+				railtype_flags:				bitmask();
+				curve_speed_multiplier:		10;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			11;
+				speed_limit:				140 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					3;
+				maintenance_cost:			10;
+				/*alternative_railtype_list:	["RAIL", "DNNB", "DNNC"];*/		
+				}
+			}
+			
+		/* DNZA 1435 RAG SYSTEM */
+		item(FEAT_RAILTYPES, item_DNZA){
+			property{
+				label:						"DNZA";
+				introduction_date:			date(1955,1,1);
+				name:						string(STR_ITEM_NAME_DNZA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DNZA);
+				menu_text:					string(STR_ITEM_MENU_DNZA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DNZA);
+				powered_railtype_list:		["RAIL", "ELRL", "DNNA", "DNNB", "DNNC"];
+
+				railtype_flags:				bitmask();
+				curve_speed_multiplier:		1;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			11;
+				speed_limit:				80 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					4;
+				maintenance_cost:			10;
+				/*alternative_railtype_list:	["RAIL", "DNNB", "DNNC"];*/		
+				}
+			}
+
+		/* CLASSIC INGAME ELRL */
+		item(FEAT_RAILTYPES, item_ELRL){
+			property{
+				label:						"ELRL";
+				introduction_date:			date(1965,1,1);
+				name:						string(STR_ITEM_NAME_ELRL);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_ELRL);
+				menu_text:					string(STR_ITEM_MENU_ELRL);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_ELRL);
+				powered_railtype_list:		["ELRL", "DEWA", "DEWB", "DEWC", "DHWA", "DHWB", "DHWB",];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		1;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			12;
+				speed_limit:				60 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					30;
+				sort_order:					5;
+				maintenance_cost:			12;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+		
+	/* DEWA label slow electric rails 3kV, 1435 mm */
+		item(FEAT_RAILTYPES, item_DEWA){
+			property{
+				label:						"DEWA";
+				introduction_date:			date(1965,1,1);
+				name:						string(STR_ITEM_NAME_DEWA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DEWA);
+				menu_text:					string(STR_ITEM_MENU_DEWA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DEWA);
+				powered_railtype_list:		["ELRL", "DEWB", "DEWC",];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		6;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			11;
+				speed_limit:				90 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					60;
+				sort_order:					6;
+				maintenance_cost:			10;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+	/* DEWB label fast electric rails 3kV, 1435 mm */
+		item(FEAT_RAILTYPES, item_DEWB){
+			property{
+				label:						"DEWB";
+				introduction_date:			date(1975,1,1);
+				name:						string(STR_ITEM_NAME_DEWB);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DEWB);
+				menu_text:					string(STR_ITEM_MENU_DEWB);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DEWB);
+				powered_railtype_list:		["ELRL","DWWA", "DEWC",];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		11;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			12;
+				speed_limit:				120 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					60;
+				sort_order:					7;
+				maintenance_cost:			12;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+		/* DEWC label fast electric rails 3kV, 1435 mm */
+		item(FEAT_RAILTYPES, item_DEWC){
+			property{
+				label:						"DEWC";
+				introduction_date:			date(1985,1,1);
+				name:						string(STR_ITEM_NAME_DEWC);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DEWC);
+				menu_text:					string(STR_ITEM_MENU_DEWC);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DEWC);
+				powered_railtype_list:		["ELRL","DWWA", "DEWB"];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		30;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			24;
+				speed_limit:				160 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					60;
+				sort_order:					8;
+				maintenance_cost:			24;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+		/* DHWA label fast electric rails 25kV, 1435 mm */
+		item(FEAT_RAILTYPES, item_DHWA){
+			property{
+				label:						"DHWA";
+				introduction_date:			date(1967,1,1);
+				name:						string(STR_ITEM_NAME_DHWA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DHWA);
+				menu_text:					string(STR_ITEM_MENU_DHWA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DHWA);
+				powered_railtype_list:		["ELRL","DHWB", "DHWC"];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		6;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			12;
+				speed_limit:				120 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					90;
+				sort_order:					9;
+				maintenance_cost:			12;
+				}
+			}
+			
+		/* DHWB label fast electric rails 25kV, 1435 mm */
+		item(FEAT_RAILTYPES, item_DHWB){
+			property{
+				label:						"DHWB";
+				introduction_date:			date(2005,1,1);
+				name:						string(STR_ITEM_NAME_DHWB);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DHWB);
+				menu_text:					string(STR_ITEM_MENU_DHWB);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DHWB);
+				powered_railtype_list:		["ELRL","DHWA", "DHWC", "DGWA", "DGWB", "DGWC"];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		12;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			13;
+				speed_limit:				160 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					90;
+				sort_order:					10;
+				maintenance_cost:			13;
+				}
+			}
+			
+		/* DHWC label fast electric rails 25kV, 1435 mm */
+		item(FEAT_RAILTYPES, item_DHWC){
+			property{
+				label:						"DHWC";
+				introduction_date:			date(2035,1,1);
+				name:						string(STR_ITEM_NAME_DHWC);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DHWC);
+				menu_text:					string(STR_ITEM_MENU_DHWC);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DHWC);
+				powered_railtype_list:		["ELRL","DHWA", "DHWB",];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		12;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			24;
+				speed_limit:				200 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					90;
+				sort_order:					11;
+				maintenance_cost:			24;
+				}
+			}
+} else {
+}
+
+
+if(param_tracks == 2){
+		/* DGWA label fast electric rails 15kV, 1435 mm */
+		item(FEAT_RAILTYPES, item_DGWA){
+			property{
+				label:						"DGWA";
+				introduction_date:			date(1999,1,7);
+				name:						string(STR_ITEM_NAME_DGWA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DGWA);
+				menu_text:					string(STR_ITEM_MENU_DGWA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DGWA);
+				powered_railtype_list:		["DGWB", "DGWC", "ELRL"];
+				
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		24;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			20;
+				speed_limit:				160 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					120;
+				sort_order:					12;
+				maintenance_cost:			20;
+				}
+			}
+			
+			/* DGWB label fast electric rails 15kV, 1435 mm */
+		item(FEAT_RAILTYPES, item_DGWB){
+			property{
+				label:						"DGWB";
+				introduction_date:			date(2009,1,1);
+				name:						string(STR_ITEM_NAME_DGWB);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DGWB);
+				menu_text:					string(STR_ITEM_MENU_DGWB);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DGWB);
+				powered_railtype_list:		["DGWA", "DGWC", "ELRL", "DEWA", "DEWB", "DEWC", "DHWA", "DHWB", "DHWC"];
+				
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		20;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			24;
+				speed_limit:				200 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					120;
+				sort_order:					13;
+				maintenance_cost:			24;
+				}
+			}
+
+		/* DGWC label fast electric rails 15kV, 1435 mm */
+		item(FEAT_RAILTYPES, item_DGWC){
+			property{
+				label:						"DGWC";
+				introduction_date:			date(2019,1,1);
+				name:						string(STR_ITEM_NAME_DGWC);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_DGWC);
+				menu_text:					string(STR_ITEM_MENU_DGWC);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_DGWC);
+				powered_railtype_list:		["DGWA", "DGWB", "ELRL", "DEWA", "DEWB", "DEWC"];
+				
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		20;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			24;
+				speed_limit:				230 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					120;
+				sort_order:					13;
+				maintenance_cost:			24;
+				}
+			}
+	} else  {}
+
+if((param_NARROW == 1) && ((param_tracks == 1) || (param_tracks == 2))){
+/*TREŽ 760 mm*/		
+		item(FEAT_RAILTYPES, item_BNNA){
+			property{
+				label:						"BNNA";
+				introduction_date:			date(1909,1,1);
+				name:						string(STR_ITEM_NAME_BNNA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_BNNA);
+				menu_text:					string(STR_ITEM_MENU_BNNA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_BNNA);
+				powered_railtype_list:		["BNNA", "BBWA", "BBWC"];
+
+				railtype_flags:				bitmask();
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			8;
+				speed_limit:				30 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					14;
+				maintenance_cost:			4;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+/*TREŽ 760 mm, 750 V*/		
+		item(FEAT_RAILTYPES, item_BBWA){
+			property{
+				label:						"BBWA";
+				introduction_date:			date(1909,1,1);
+				name:						string(STR_ITEM_NAME_BBWA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_BBWA);
+				menu_text:					string(STR_ITEM_MENU_BBWA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_BBWA);
+				powered_railtype_list:		["BNNA", "BBWA", "BBWC"];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			8;
+				speed_limit:				30 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					15;
+				maintenance_cost:			4;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+/*TEŽ 1000 mm*/		
+		item(FEAT_RAILTYPES, item_CNNA){
+			property{
+				label:						"CNNA";
+				introduction_date:			date(1908,1,1);
+				name:						string(STR_ITEM_NAME_CNNA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_CNNA);
+				menu_text:					string(STR_ITEM_MENU_CNNA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_CNNA);
+				powered_railtype_list:		["CNNA", "CNZA", "CIWA", "CIRA", "CIRH"];
+
+				railtype_flags:				bitmask();
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			8;
+				speed_limit:				60 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					16;
+				maintenance_cost:			5;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+		item(FEAT_RAILTYPES, item_CNZA){
+			property{
+				label:						"CNZA";
+				introduction_date:			date(1908,1,1);
+				name:						string(STR_ITEM_NAME_CNZA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_CNZA);
+				menu_text:					string(STR_ITEM_MENU_CNZA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_CNZA);
+				powered_railtype_list:		["CNNA", "CNZA", "CIWA", "CIRA", "CIRH"];
+
+				railtype_flags:				bitmask();
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			8;
+				speed_limit:				60 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					17;
+				maintenance_cost:			5;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+		item(FEAT_RAILTYPES, item_CIWA){
+			property{
+				label:						"CIWA";
+				introduction_date:			date(1908,1,1);
+				name:						string(STR_ITEM_NAME_CIWA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_CIWA);
+				menu_text:					string(STR_ITEM_MENU_CIWA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_CIWA);
+				powered_railtype_list:		["CIWA", "CIRH"];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			14;
+				speed_limit:				60 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					18;
+				maintenance_cost:			10;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+		item(FEAT_RAILTYPES, item_CIRA){
+			property{
+				label:						"CIRA";
+				introduction_date:			date(1908,1,1);
+				name:						string(STR_ITEM_NAME_CIRA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_CIRA);
+				menu_text:					string(STR_ITEM_MENU_CIRA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_CIRA);
+				powered_railtype_list:		["CIRA", "CIRH"];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			16;
+				speed_limit:				60 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					19;
+				maintenance_cost:			12;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+		item(FEAT_RAILTYPES, item_CIRH){
+			property{
+				label:						"CIRH";
+				introduction_date:			date(1908,1,1);
+				name:						string(STR_ITEM_NAME_CIRH);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_CIRH);
+				menu_text:					string(STR_ITEM_MENU_CIRH);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_CIRH);
+				powered_railtype_list:		["CIRA", "CIRW", "CIRH"];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_HIDDEN);
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			16;
+				speed_limit:				60 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					20;
+				maintenance_cost:			12;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+	} else {}
+
+if((param_BROAD == 1) && ((param_tracks == 1) || (param_tracks == 2))){	
+/*1520 mm*/
+		item(FEAT_RAILTYPES, item_ENNA){
+			property{
+				label:						"ENNA";
+				introduction_date:			date(1800,1,1);
+				name:						string(STR_ITEM_NAME_ENNA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_ENNA);
+				menu_text:					string(STR_ITEM_MENU_ENNA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_ENNA);
+				powered_railtype_list:		["ENNB", "ENNC", "EEWA", "EEWB", "EEWC", "EHWA", "EHWB", "EHWC"];
+
+				railtype_flags:				bitmask();
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			9;
+				speed_limit:				80 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					21;
+				maintenance_cost:			5;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+/*1520 mm*/
+		item(FEAT_RAILTYPES, item_ENNB){
+			property{
+				label:						"ENNB";
+				introduction_date:			date(1850,1,1);
+				name:						string(STR_ITEM_NAME_ENNB);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_ENNB);
+				menu_text:					string(STR_ITEM_MENU_ENNB);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_ENNB);
+				powered_railtype_list:		["ENNA", "ENNC", "EEWA", "EEWB", "EEWC", "EHWA", "EHWB", "EHWC"];
+
+				railtype_flags:				bitmask();
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			10;
+				speed_limit:				110 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					22;
+				maintenance_cost:			8;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+/*1520 mm*/
+		item(FEAT_RAILTYPES, item_ENNC){
+			property{
+				label:						"ENNC";
+				introduction_date:			date(1950,1,1);
+				name:						string(STR_ITEM_NAME_ENNB);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_ENNB);
+				menu_text:					string(STR_ITEM_MENU_ENNB);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_ENNB);
+				powered_railtype_list:		["ENNA", "ENNC", "EEWA", "EEWB", "EEWC", "EHWA", "EHWB", "EHWC"];
+
+				railtype_flags:				bitmask();
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			10;
+				speed_limit:				140 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					23;
+				maintenance_cost:			8;
+				}
+			}
+			
+		item(FEAT_RAILTYPES, item_EEWA){
+			property{
+				label:						"EEWA";
+				introduction_date:			date(1950,1,1);
+				name:						string(STR_ITEM_NAME_EEWA);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_EEWA);
+				menu_text:					string(STR_ITEM_MENU_EEWA);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_EEWA);
+				powered_railtype_list:		["EEWA", "EEWB", "EEWC"];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			14;
+				speed_limit:				100 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					24;
+				maintenance_cost:			10;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+		item(FEAT_RAILTYPES, item_EEWB){
+			property{
+				label:						"EEWB";
+				introduction_date:			date(1950,1,1);
+				name:						string(STR_ITEM_NAME_EEWB);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_EEWB);
+				menu_text:					string(STR_ITEM_MENU_EEWB);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_EEWB);
+				powered_railtype_list:		["EEWA", "EEWB", "EEWC", "EHWA", "EHWB", "EHWC"];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			15;
+				speed_limit:				140 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					25;
+				maintenance_cost:			11;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+			
+		item(FEAT_RAILTYPES, item_EEWC){
+			property{
+				label:						"EEWC";
+				introduction_date:			date(1950,1,1);
+				name:						string(STR_ITEM_NAME_EEWC);
+				toolbar_caption:			string(STR_ITEM_TOOLBAR_EEWC);
+				menu_text:					string(STR_ITEM_MENU_EEWC);
+				/*autoreplace_text:			;*/
+				new_engine_text:			string(STR_ITEM_NEWENGINE_EEWC);
+				powered_railtype_list:		["EEWA", "EEWB", "EEWC"];
+
+				railtype_flags:				bitmask(RAILTYPE_FLAG_CATENARY);
+				curve_speed_multiplier:		255;
+				station_graphics:			RAILTYPE_STATION_NORMAL;
+				construction_cost:			16;
+				speed_limit:				140 km/h;
+				acceleration_model:			ACC_MODEL_RAIL;
+				map_colour:					1;
+				sort_order:					26;
+				maintenance_cost:			12;
+				/*alternative_railtype_list:	["DNNA", "DNNB", "DNNC"];*/
+				}
+			}
+	} else {}
+
